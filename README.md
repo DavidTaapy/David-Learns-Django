@@ -32,3 +32,10 @@ The following applications were then started with 'python manage.py startapp {na
 - Customers
 
 Do remember to add these applications along with crispy_forms to 'settings.py'
+
+## Concepts Covered
+
+The concepts covered in the project includes:
+
+- Creating and using applications
+- Signals
