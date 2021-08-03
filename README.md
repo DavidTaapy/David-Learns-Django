@@ -39,3 +39,7 @@ The concepts covered in the project includes:
 
 - Creating and using applications
 - Signals
+
+## Running the application
+
+Use 'python manage.py runserver' to start the application
