@@ -37,7 +37,7 @@ Do remember to add these applications along with crispy_forms to 'settings.py'
 
 The concepts covered in the project includes:
 
-- Creating and using applications
+- Models / Views / Templates
 - Signals
 
 ## Running the application
