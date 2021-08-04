@@ -5,16 +5,15 @@ from.forms import SalesSearchForm
 from .utils import get_customer_from_id, get_salesman_from_id
 import pandas as pd
 
+
 # Create your views here.
-
-
 def home_view(request):
     # Initializing dataframe
     sales_df = None
     positions_df = None
+    merged_df = None
     # Both with and without inputs
     form = SalesSearchForm(request.POST or None)
-
     # When information is given
     if request.method == "POST":
         date_from = request.POST.get('date_from')
@@ -32,7 +31,8 @@ def home_view(request):
                 lambda x: x.strftime('%Y-%m-%d'))
             sales_df.rename({
                 'customer_id': 'customer',
-                'salesman_id': 'salesman'
+                'salesman_id': 'salesman',
+                'id': 'sales_id'
             }, axis=1, inplace=True)
             # Getting Positions
             positions_data = []
@@ -47,16 +47,19 @@ def home_view(request):
                     }
                     positions_data.append(obj)
             positions_df = pd.DataFrame(positions_data)
+            merged_df = pd.merge(sales_df, positions_df, on='sales_id')
             # Converting DataFrames To HTML
             sales_df = sales_df.to_html()
             positions_df = positions_df.to_html()
+            merged_df = merged_df.to_html()
         else:
             print('No data')
 
     context = {
         'form': form,
         'sales_df': sales_df,
-        'positions_df': positions_df
+        'positions_df': positions_df,
+        'merged_df': merged_df
     }
     return render(request, 'sales/home.html', context)
 
