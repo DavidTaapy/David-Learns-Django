@@ -8,6 +8,8 @@ import pandas as pd
 
 
 def home_view(request):
+    # Initializing dataframe
+    sales_df = None
     # Both with and without inputs
     form = SalesSearchForm(request.POST or None)
 
@@ -16,12 +18,18 @@ def home_view(request):
         date_from = request.POST.get('date_from')
         date_to = request.POST.get('date_to')
         chart_type = request.POST.get('chart_type')
+        qs = Sale.objects.filter(created__date__lte=date_to,
+                                 created__date__gte=date_from)
 
-    qs = Sale.objects.all()
-    df1 = pd.DataFrame(qs.values())
+        if len(qs) > 0:
+            sales_df = pd.DataFrame(qs.values())
+            sales_df = sales_df.to_html()
+        else:
+            print('No data')
 
     context = {
-        'form': form
+        'form': form,
+        'sales_df': sales_df
     }
     return render(request, 'sales/home.html', context)
 
