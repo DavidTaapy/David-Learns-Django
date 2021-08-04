@@ -16,6 +16,8 @@ Home
 
 {% if sales_df %}
     {{sales_df|safe}}
+    <br>
+    {{positions_df|safe}}
 {% else %}
     <h3>No data</h3>
 {% endif %}
