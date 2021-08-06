@@ -9,6 +9,8 @@ import pandas as pd
 
 # Create your views here.
 def home_view(request):
+    # Initializing variables
+    no_data = None
     # Initializing dataframe
     sales_df = None
     positions_df = None
@@ -65,7 +67,7 @@ def home_view(request):
             merged_df = merged_df.to_html()
             df = df.to_html()
         else:
-            print('No data')
+            no_data = 'No data available in this date range!'
 
     context = {
         'search_form': search_form,
@@ -74,7 +76,8 @@ def home_view(request):
         'positions_df': positions_df,
         'merged_df': merged_df,
         'df': df,
-        'chart': chart
+        'chart': chart,
+        'no_data': no_data
     }
     return render(request, 'sales/home.html', context)
 

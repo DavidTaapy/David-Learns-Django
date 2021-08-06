@@ -31,6 +31,12 @@ Home
   </div>
 </div>
 
+{% if no_data %}
+  <div class="alert alert-warning" role="alert">
+    {{no_data}}
+  </div>
+{% endif %}
+
 <hr />
 <form action="" method="POST">
   {% csrf_token %}
@@ -55,8 +61,6 @@ Home
     <br>
     Chart
     <img src="data:image/png;base64, {{chart|safe}}" id='img'>
-{% else %}
-    <h3>No data</h3>
 {% endif %}
 
 <br>
