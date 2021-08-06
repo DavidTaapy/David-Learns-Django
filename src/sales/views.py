@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Sale
-from.forms import SalesSearchForm
+from .forms import SalesSearchForm
+from reports.forms import ReportForm
 from .utils import get_customer_from_id, get_salesman_from_id, get_chart
 import pandas as pd
 
@@ -16,7 +17,8 @@ def home_view(request):
     # Initializing chart
     chart = None
     # Both with and without inputs
-    form = SalesSearchForm(request.POST or None)
+    search_form = SalesSearchForm(request.POST or None)
+    report_form = ReportForm()
     # When information is given
     if request.method == "POST":
         date_from = request.POST.get('date_from')
@@ -65,7 +67,8 @@ def home_view(request):
             print('No data')
 
     context = {
-        'form': form,
+        'search_form': search_form,
+        'report_form': report_form,
         'sales_df': sales_df,
         'positions_df': positions_df,
         'merged_df': merged_df,
