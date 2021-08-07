@@ -16,9 +16,9 @@ The following libraries were used in the project:
 
 A project is first created using 'django-admin startproject {projectName}'  
 Then, a Sqlite3 database was created using 'python manage.py migrate'  
-Then, a super user was created using 'python manage.py createsuperuser'
-Then, 'python manage.py runserver' was used to start the development server
-Then, a templates folder was added to src after changing template directory in settings.py
+Then, a super user was created using 'python manage.py createsuperuser'  
+Then, 'python manage.py runserver' was used to start the development server  
+Then, a templates folder was added to src after changing template directory in settings.py  
 Then, we ended by adding the 'static' and 'media' directories are required
 
 ### Applications
@@ -39,6 +39,7 @@ The concepts covered in the project includes:
 
 - Models / Views / Templates
 - Signals
+- Forms
 
 ## Running the application
 

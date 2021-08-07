@@ -1,5 +1,4 @@
 from django.urls import path
-
 from sales.models import Sale
 from .views import (
     home_view,
