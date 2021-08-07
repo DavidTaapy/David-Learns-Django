@@ -3,9 +3,25 @@ from profiles.models import Profile
 from django.http import JsonResponse
 from .utils import get_report_image
 from .models import Report
+from django.views.generic import ListView, DetailView
+
+
+# Class for views
+
+
+class ReportListView(ListView):
+    model = Report
+    template_name = 'reports/main.html'
+
+
+class ReportDetailView(DetailView):
+    model = Report
+    template_name = 'reports/detail.html'
 
 
 # Create your views here.
+
+
 def create_report_view(request):
     if request.is_ajax():
         name = request.POST.get('name')
