@@ -3,7 +3,7 @@ from profiles.models import Profile
 from django.http import JsonResponse, HttpResponse
 from .utils import get_report_image
 from .models import Report
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 from django.conf import settings
 from django.template.loader import get_template
 from xhtml2pdf import pisa
@@ -20,6 +20,10 @@ class ReportListView(ListView):
 class ReportDetailView(DetailView):
     model = Report
     template_name = 'reports/detail.html'
+
+
+class UploadTemplateView(TemplateView):
+    template_name = 'reports/from_file.html'
 
 
 # Create your views here.
@@ -60,3 +64,7 @@ def render_pdf_view(request, pk):
     if pisa_status.err:
         return HttpResponse('We had some errors <pre>' + html + '</pre>')
     return response
+
+
+def csv_upload_view(request):
+    return HttpResponse()
