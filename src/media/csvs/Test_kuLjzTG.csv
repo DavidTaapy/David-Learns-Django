@@ -1,0 +1,9 @@
+﻿Transaction_id,Product,Quantity,Customer,Date
+E100,TV,1,Test Customer,12/8/2021
+E100,Laptop,3,Test Customer,12/8/2021
+E200,TV,1,Test Customer,13/8/2021
+E300,Smartphone,2,New Customer,14/8/2021
+E300,Laptop,5,New Customer,14/8/2021
+E300,TV,1,Test Customer,14/8/2021
+E400,TV,2,ABC,15/8/2021
+E500,Smartwatch,4,ABC,16/8/2021
