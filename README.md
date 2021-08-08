@@ -50,17 +50,22 @@ Use 'python manage.py runserver' to start the application
 ## Snapshots
 
 The home page shown below allows the user to filter transactions based on the date_from and date_to as well as choose how to filter the transactions and the type of chart required!  
+<br>
 ![Market](/snapshots/Home.PNG)
 
 The web app has a authentication system!  
+<br>
 ![Market](/snapshots/Authentication.PNG)
 
 The details of transactions can be shown in the page below! Reports can also be generated in the PDF format!  
+<br>
 ![Market](/snapshots/Details.PNG)
 ![Market](/snapshots/Reports.PNG)
 
-CSV data can be uploaded via a dropzone and the various objects will be created automatically!  
+CSV data can be uploaded via a dropzone and the various objects will be created automatically! 
+<br>
 ![Market](/snapshots/Uploading.PNG)
 
 Users can customize their profiles!  
+<br>
 ![Market](/snapshots/Profile.PNG)
