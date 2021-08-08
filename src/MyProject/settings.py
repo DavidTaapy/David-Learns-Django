@@ -124,6 +124,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+# AUTH
+LOGIN_URL = '/login/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -134,7 +136,6 @@ STATICFILES_DIRS = [
     BASE_DIR / 'sales' / 'static',
     BASE_DIR / 'reports' / 'static'
 ]
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 

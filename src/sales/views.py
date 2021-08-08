@@ -5,9 +5,13 @@ from .forms import SalesSearchForm
 from reports.forms import ReportForm
 from .utils import get_customer_from_id, get_salesman_from_id, get_chart
 import pandas as pd
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
+
+
+@login_required
 def home_view(request):
     # Initializing variables
     no_data = None
@@ -82,7 +86,7 @@ def home_view(request):
     return render(request, 'sales/home.html', context)
 
 
-class SaleListView(ListView):
+class SaleListView(LoginRequiredMixin, ListView):
     model = Sale
     template_name = 'sales/main.html'
     # context_object_name = 'salesItems' # Replace object_list with salesItems
@@ -93,7 +97,7 @@ class SaleListView(ListView):
 #     return render(request, 'sales/main.html', {'object_list': qs})
 
 
-class SaleDetailView(DetailView):
+class SaleDetailView(LoginRequiredMixin, DetailView):
     model = Sale
     template_name = 'sales/detail.html'
 

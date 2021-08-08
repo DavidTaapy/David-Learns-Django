@@ -12,28 +12,29 @@ from xhtml2pdf import pisa
 from sales.models import Sale, Position, CSV
 import csv
 from django.utils.dateparse import parse_date
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Class for views
 
 
-class ReportListView(ListView):
+class ReportListView(LoginRequiredMixin, ListView):
     model = Report
     template_name = 'reports/main.html'
 
 
-class ReportDetailView(DetailView):
+class ReportDetailView(LoginRequiredMixin, DetailView):
     model = Report
     template_name = 'reports/detail.html'
 
 
-class UploadTemplateView(TemplateView):
+class UploadTemplateView(LoginRequiredMixin, TemplateView):
     template_name = 'reports/from_file.html'
 
 
 # Create your views here.
 
-
+@login_required
 def create_report_view(request):
     if request.is_ajax():
         name = request.POST.get('name')
@@ -49,6 +50,7 @@ def create_report_view(request):
     return JsonResponse({})
 
 
+@login_required
 def render_pdf_view(request, pk):
     template_path = 'reports/pdf.html'
     obj = Report.objects.get(pk=pk)
@@ -71,6 +73,7 @@ def render_pdf_view(request, pk):
     return response
 
 
+@login_required
 def csv_upload_view(request):
     if request.method == 'POST':
         csv_file_name = request.FILES.get('file').name
