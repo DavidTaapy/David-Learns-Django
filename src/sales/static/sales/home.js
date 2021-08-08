@@ -42,6 +42,7 @@ reportBtn.addEventListener('click', () => {
             data: formData,
             success: function(response) {
                 handleAlerts('success', 'Report Created!');
+                reportForm.reset();
             },
             error: function(error) {
                 handleAlerts('danger', 'Something went wrong!');
