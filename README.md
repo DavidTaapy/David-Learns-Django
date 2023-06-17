@@ -19,7 +19,7 @@ Then, a Sqlite3 database was created using 'python manage.py migrate'
 Then, a super user was created using 'python manage.py createsuperuser'  
 Then, 'python manage.py runserver' was used to start the development server  
 Then, a templates folder was added to src after changing template directory in settings.py  
-Then, we ended by adding the 'static' and 'media' directories are required
+Then, we ended by adding the 'static' and 'media' directories as required
 
 ### Applications
 
