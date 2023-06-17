@@ -11,6 +11,7 @@ from django.template.loader import get_template
 from xhtml2pdf import pisa
 from sales.models import Sale, Position, CSV
 import csv
+import datetime
 from django.utils.dateparse import parse_date
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -88,7 +89,7 @@ def csv_upload_view(request):
                 for row in reader:
                     transaction_id, product, quantity, customer, date = row
                     quantity = int(quantity)
-                    date = parse_date(date)
+                    date = datetime.datetime.strptime(date, "%d/%m/%Y").date()
 
                     try:
                         product_obj = Product.objects.get(name__iexact=product)
