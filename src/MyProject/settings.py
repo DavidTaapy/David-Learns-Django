@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'reports',
     'sales',
     # 3rd Party
-    'crispy_forms'
+    'crispy_forms',
+    'crispy_bootstrap4'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
